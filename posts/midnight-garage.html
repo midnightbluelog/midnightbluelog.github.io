@@ -57,29 +57,17 @@
         <li><strong>logs a service in under 15 seconds.</strong> Tap what got done, type the mileage, save. I timed it.</li>
         <li><strong>tells me what's due</strong>, by kilometres <em>and</em> by time. Parts wear when you drive, but brake fluid and coolant get old even when the car just sits there.</li>
         <li><strong>a watch list</strong> of known problems for this exact car and engine, filtered to my mileage. Basically "things that might betray you at 412,000 km."</li>
-        <li><strong>a health score</strong> for the whole car. We'll get to that one. It's a story.</li>
+        <li><strong>a health score</strong> for the whole car. One number. Very serious. Mostly.</li>
         <li><strong>an AI mechanic.</strong> Tell it what's wrong, answer 4 questions, get a list of likely causes. It runs on my own PC for now. Free.</li>
       </ul>
       <p>The look is an 80s/90s amber screen, old-school instrument lighting vibes.</p>
       <p>Funny story. I told Claude I wanted it to feel like a Gameboy. I got a literal Gameboy. D-pad, buttons, START and SELECT, the whole thing. Bro. I meant the <em>era</em>, not the toy lol.</p>
       <p>Lesson: when you work with AI, describe the feeling <em>and</em> the shape. Otherwise it takes you word for word.</p>
 
-      <h2>the 100% lie</h2>
-      <p>The first version of the health score said my car was <strong>100% healthy.</strong></p>
-      <p>Cool. Except the app had zero data on my brake fluid, my coolant and my glow plugs. It just ignored everything it didn't know and handed me a perfect score.</p>
-      <p>My honest reaction: this is bs.</p>
-      <p>Me, I'd never believe it. I'm the one building it, I know my car. But picture someone who knows nothing about cars. They open the app, see 100%, and relax. Meanwhile their brake fluid might be ten years old.</p>
-      <p>A pretty number on a car app isn't harmless. It can get someone hurt.</p>
-      <p>So I wrote a new formula myself:</p>
-      <ul>
-        <li>every service gets a weight for how much it matters. Brakes and oil count the most.</li>
-        <li>the app tracks how much of the car it actually <em>knows</em> about.</li>
-        <li>health = condition × knowledge. Stuff it doesn't know pulls the score down until you log it.</li>
-        <li>overdue brakes cap everything at 60%. No matter how good the rest looks.</li>
-      </ul>
-      <p>My car went from a fake 100% to an honest <strong>64%.</strong></p>
-      <blockquote>Worse number. Way better app. Honesty first.</blockquote>
-      <p>And that bug gave me the next idea. When the app doesn't know something, it shouldn't guess. It should <strong>ask.</strong> "When was your brake fluid last changed? Not sure? Here's how to check it in 2 minutes."</p>
+      <h2>ask, don't guess</h2>
+      <p>Quick funny one. The first version of the app told me my car was <strong>100% healthy.</strong> A 412,000 km diesel. Perfect. Flawless. Never been better lol.</p>
+      <p>It just didn't know anything about my brake fluid, coolant or glow plugs, so it ignored them. Fixed it, it says 64% now, moving on.</p>
+      <p>But it gave me the idea I'm actually excited about. When the app doesn't know something, it shouldn't guess. It should <strong>ask.</strong> "When was your brake fluid last changed? Not sure? Here's how to check it in 2 minutes."</p>
       <p>It should also figure out who it's talking to. Someone who says "the thing under the hood" and someone who says "expansion tank" need different answers. The words people use tell you so much about what they actually know. I want this to work for someone with zero knowledge <em>and</em> for the pros. The whole spectrum.</p>
 
       <h2>ok but who actually built it</h2>
@@ -90,7 +78,7 @@
         <li>wrote the specs and made the design calls</li>
         <li>reviewed every milestone until I could explain how each part works</li>
         <li>used it with my real car and, in about 20 minutes, found real problems the AI missed. Like the year field happily accepting "20040913" lol</li>
-        <li>caught the fake 100%</li>
+        <li>caught the "100% healthy" lie</li>
         <li>typed my first real code into it myself, a new engine variant for the VIN decoder, and ran the tests on my own</li>
       </ul>
       <p>There was also a bug where old copies of the app were still running in the background, answering instead of the new one. Ghost servers. Sounds cool. I'd love to tell you it taught me something deep. It didn't. Claude found it, I watched. Not every bug is a lesson lol.</p>
