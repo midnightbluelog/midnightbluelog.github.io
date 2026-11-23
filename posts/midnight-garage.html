@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I used to keep track of my car in my head · midnightblue</title>
+  <meta name="description" content="Building Midnight Garage, my first real project: a service log, an honest health score and an AI mechanic for my 412,000 km W211.">
+  <meta property="og:title" content="I used to keep track of my car in my head">
+  <meta property="og:description" content="Building Midnight Garage, my first real project.">
+  <meta property="og:image" content="https://midnightbluelog.github.io/posts/img/post-02-cockpit.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/moon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href="/"><img src="/moon.svg" alt="">midnightblue</a>
+      <nav class="nav">
+        <a href="../">home</a>
+        <a href="../about.html">about</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <header class="post-header">
+      <h1>I used to keep track of my car in my head</h1>
+      <p class="subtitle">building Midnight Garage, my first real project</p>
+      <div class="meta"><span class="idx">002</span> · 23 nov 2026 · 7 min read · midnightblue</div>
+    </header>
+
+    <article class="post">
+      <figure class="post-photo"><img src="img/post-02-cockpit.jpg" alt="Hand on the steering wheel of the W211, the sea ahead through the windscreen" width="960" height="1075"></figure>
+
+      <p>Every oil change. Every filter. The brakes, the suspension, the whole front end.</p>
+      <p>All of it lived in my head.</p>
+      <p>Not a notebook. Not an app. My head. The same head that forgets why it walked into the kitchen.</p>
+      <p>So I built something. It's called <strong>Midnight Garage</strong>, it's public, and it's my first real project: <a href="https://github.com/midnightbluelog/w211-tracker">github.com/midnightbluelog/w211-tracker</a></p>
+      <p>Here's how it went. The good parts, and the parts I'm not going to pretend about.</p>
+
+      <h2>meet the car</h2>
+      <p>2004 Mercedes W211. E 220 CDI. Diesel, manual. <strong>412,000 km.</strong> No rust.</p>
+      <p>Yes, four hundred and twelve thousand. And it drives like it doesn't care.</p>
+      <p>Somehow the world decided that a perfectly working machine, strong engine, luxurious, zero rust, is worth about 1/20 of a new car. I think that's crazy. Old doesn't mean finished.</p>
+      <p>In Tunisia these cars cost a lot because of taxes, so owning one is kind of every guy's dream here. I do have rental cars, but that's business. One of them is an MG3, and driving it is honestly a punishment lol. This one is different. This one is mine.</p>
+      <p>A car is personal. It buys you freedom. It's also a responsibility.</p>
+      <p>So I'm restoring it the right way. Suspension, brakes, the front end, bodywork, paint. After one of the big repairs I took it out, and I felt adrenaline. Like, real happiness. Like I'm building something that lasts.</p>
+      <p>And the record of all that work? In my head. Basically.</p>
+      <p>Yeah. That's the problem.</p>
+
+      <h2>so what does it do</h2>
+      <ul>
+        <li><strong>logs a service in under 15 seconds.</strong> Tap what got done, type the mileage, save. I timed it.</li>
+        <li><strong>tells me what's due</strong>, by kilometres <em>and</em> by time. Parts wear when you drive, but brake fluid and coolant get old even when the car just sits there.</li>
+        <li><strong>a watch list</strong> of known problems for this exact car and engine, filtered to my mileage. Basically "things that might betray you at 412,000 km."</li>
+        <li><strong>a health score</strong> for the whole car. We'll get to that one. It's a story.</li>
+        <li><strong>an AI mechanic.</strong> Tell it what's wrong, answer 4 questions, get a list of likely causes. It runs on my own PC for now. Free.</li>
+      </ul>
+      <p>The look is an 80s/90s amber screen, old-school instrument lighting vibes.</p>
+      <p>Funny story. I told Claude I wanted it to feel like a Gameboy. I got a literal Gameboy. D-pad, buttons, START and SELECT, the whole thing. Bro. I meant the <em>era</em>, not the toy lol.</p>
+      <p>Lesson: when you work with AI, describe the feeling <em>and</em> the shape. Otherwise it takes you word for word.</p>
+
+      <h2>the 100% lie</h2>
+      <p>The first version of the health score said my car was <strong>100% healthy.</strong></p>
+      <p>Cool. Except the app had zero data on my brake fluid, my coolant and my glow plugs. It just ignored everything it didn't know and handed me a perfect score.</p>
+      <p>My honest reaction: this is bs.</p>
+      <p>Me, I'd never believe it. I'm the one building it, I know my car. But picture someone who knows nothing about cars. They open the app, see 100%, and relax. Meanwhile their brake fluid might be ten years old.</p>
+      <p>A pretty number on a car app isn't harmless. It can get someone hurt.</p>
+      <p>So I wrote a new formula myself:</p>
+      <ul>
+        <li>every service gets a weight for how much it matters. Brakes and oil count the most.</li>
+        <li>the app tracks how much of the car it actually <em>knows</em> about.</li>
+        <li>health = condition × knowledge. Stuff it doesn't know pulls the score down until you log it.</li>
+        <li>overdue brakes cap everything at 60%. No matter how good the rest looks.</li>
+      </ul>
+      <p>My car went from a fake 100% to an honest <strong>64%.</strong></p>
+      <blockquote>Worse number. Way better app. Honesty first.</blockquote>
+      <p>And that bug gave me the next idea. When the app doesn't know something, it shouldn't guess. It should <strong>ask.</strong> "When was your brake fluid last changed? Not sure? Here's how to check it in 2 minutes."</p>
+      <p>It should also figure out who it's talking to. Someone who says "the thing under the hood" and someone who says "expansion tank" need different answers. The words people use tell you so much about what they actually know. I want this to work for someone with zero knowledge <em>and</em> for the pros. The whole spectrum.</p>
+
+      <h2>ok but who actually built it</h2>
+      <p>Let's get this out of the way, because someone's going to say it.</p>
+      <p><strong>Claude wrote most of the code.</strong></p>
+      <p>Here's what I did:</p>
+      <ul>
+        <li>wrote the specs and made the design calls</li>
+        <li>reviewed every milestone until I could explain how each part works</li>
+        <li>used it with my real car and, in about 20 minutes, found real problems the AI missed. Like the year field happily accepting "20040913" lol</li>
+        <li>caught the fake 100%</li>
+        <li>typed my first real code into it myself, a new engine variant for the VIN decoder, and ran the tests on my own</li>
+      </ul>
+      <p>There was also a bug where old copies of the app were still running in the background, answering instead of the new one. Ghost servers. Sounds cool. I'd love to tell you it taught me something deep. It didn't. Claude found it, I watched. Not every bug is a lesson lol.</p>
+      <p>Do I feel like a fraud? Nah. Not at all.</p>
+      <p>I'm directing, and I'm learning at the same time. This is the very beginning. I can't know everything yet, and repetition is how I learn.</p>
+      <p>The way I see it, every real project needs a team. AI is just different members of that team. And projects with huge teams still fail all the time. Not because they're missing people. Because the vision was missing. The direction was missing.</p>
+      <p>That's what I bring. While I keep getting more technical, because I want to be able to do most of this myself. Not to prove anything to anyone. To understand it, so I can shape it however I want.</p>
+      <p>If you read this and think "he didn't really build it, the AI did"... honestly? That's irrelevant to me. This is my journey. This is how I started.</p>
+
+      <h2>what's next</h2>
+      <p>For Midnight Garage:</p>
+      <ul>
+        <li>the app asks instead of guessing</li>
+        <li>it adjusts to how much the owner knows</li>
+        <li>the AI mechanic gets a much smarter brain</li>
+      </ul>
+      <p>The bigger dream: a place for anyone with an old car they love. Photos, how driving it feels, problems you post, and one day a community fixing them together.</p>
+      <p>First it helps me. Then it helps people.</p>
+
+      <h2>just start</h2>
+      <p>This isn't only for people who want to get into AI and think they're too late. It's for anyone.</p>
+      <p>We measure how late we are in numbers. Age. Years. Timelines. But those numbers aren't who we are. Some people do in 5 months what others chase their whole lives, sometimes their parents before them too.</p>
+      <p>So when you start doesn't really matter. I'm learning that too.</p>
+      <blockquote>As long as you just fucking start.</blockquote>
+      <p>See you in the next one.</p>
+      <p class="signoff">midnightblue</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">// written by a human, built with AI · midnightblue · tunisia</div>
+  </footer>
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "aa273191af884fa4ae0877963c84672e"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

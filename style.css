@@ -158,3 +158,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 32px 0; }
   .hero-art { margin-left: -8px; }
   .nav { gap: 16px; }
 }
+
+/* post images and links */
+.post-photo { margin: 0 0 2em; }
+.post-photo img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); }
+.post a { color: var(--lavender); text-underline-offset: 3px; }
+.post a:hover { color: var(--pink); }
